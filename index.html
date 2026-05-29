@@ -160,6 +160,25 @@ section{padding:0 16px;margin-bottom:28px}
 .day-content.active{display:block}
 .share-banner{background:linear-gradient(135deg,#ECFDF5,#FFF);border:1px solid #A7F3D0;border-left:3px solid var(--success);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--ink-soft);line-height:1.5;margin:0 16px 14px}
 .share-banner strong{color:var(--success)}
+/* ===== dynamic UI/UX motion (app-like) ===== */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: no-preference){
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.day-content.active{animation:szDayIn .4s ease both}
+@keyframes szDayIn{from{opacity:0}to{opacity:1}}
+.hero{animation:szHero .7s cubic-bezier(.22,1,.36,1) both}
+@keyframes szHero{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+.tab.active{animation:szTab .35s ease}
+@keyframes szTab{0%{transform:scale(.9)}60%{transform:scale(1.05)}100%{transform:scale(1)}}
+.check-item.done .check-box{animation:szPop .34s ease}
+@keyframes szPop{0%{transform:scale(1)}40%{transform:scale(1.25)}100%{transform:scale(1)}}
+.event-dot.major{animation:szPulse 2.4s ease-in-out infinite}
+@keyframes szPulse{0%,100%{box-shadow:0 0 0 0 rgba(232,90,79,.45)}50%{box-shadow:0 0 0 6px rgba(232,90,79,0)}}
+}
+/* tap feedback on interactive controls */
+.btn-mini,.opt-link,.rest-link,.cat-pill{transition:transform .12s ease,filter .12s ease}
+.btn-mini:active,.opt-link:active,.rest-link:active,.cat-pill:active{transform:scale(.94);filter:brightness(.95)}
 </style>
 </head>
 <body>
@@ -246,11 +265,11 @@ section{padding:0 16px;margin-bottom:28px}
 <a class="opt-link" href="https://uri.amap.com/search?keyword=%E6%B5%B7%E4%B8%8A%E4%B8%96%E7%95%8C+%E6%B7%B1%E5%9C%B3" target="_blank" rel="noopener">지도 열기 →</a>
 </div></div>
 <div class="opt-card"><div class="opt-img bg-coffee">🍺</div><div class="opt-body">
-<div class="opt-cat">B · 카페 · 야식 바</div>
-<div class="opt-name">McCawley's Irish Bar</div>
-<div class="opt-ko">(맥콜리스) · 海上世界 內 · 라이브 음악</div>
-<div class="opt-loc">📍 海上世界</div>
-<a class="opt-link" href="https://uri.amap.com/search?keyword=McCawley%27s+%E6%B5%B7%E4%B8%8A%E4%B8%96%E7%95%8C" target="_blank" rel="noopener">지도 열기 →</a>
+<div class="opt-cat">B · 펍·라이브바 · 야식</div>
+<div class="opt-name">海上世界 国际酒吧街</div>
+<div class="opt-ko">深圳의 란콰이퐁 · 40여 펍·라이브바 (20시~)</div>
+<div class="opt-loc">📍 海上世界广场~南海酒店</div>
+<a class="opt-link" href="https://uri.amap.com/search?keyword=%E6%B5%B7%E4%B8%8A%E4%B8%96%E7%95%8C+%E9%85%92%E5%90%A7%E8%A1%97" target="_blank" rel="noopener">지도 열기 →</a>
 </div></div>
 <div class="opt-card"><div class="opt-img bg-shopping">🛍</div><div class="opt-body">
 <div class="opt-cat">C · 쇼핑몰 · 도보 15분</div>
@@ -655,8 +674,8 @@ section{padding:0 16px;margin-bottom:28px}
 <div class="rest-cat">노포 볶음면</div><div class="rest-name">波仔炒粉档</div><div class="rest-ko">(보자이) 鹤洲总店</div><div class="rest-loc">📍 福田</div>
 <a class="rest-link" href="https://uri.amap.com/search?keyword=%E6%B3%A2%E4%BB%94%E7%82%92%E7%B2%89%E6%A1%A3+%E9%B9%A4%E6%B4%B2" target="_blank" rel="noopener">지도 →</a></div></div>
 <div class="rest-card" data-cat="noodle"><div class="rest-img bg-noodle">🍳</div><div class="rest-body">
-<div class="rest-cat">볶음면 전문</div><div class="rest-name">董记专业炒粉</div><div class="rest-ko">(둥지) 로컬 인기</div><div class="rest-loc">📍 福田</div>
-<a class="rest-link" href="https://uri.amap.com/search?keyword=%E8%91%A3%E8%AE%B0%E4%B8%93%E4%B8%9A%E7%82%92%E7%B2%89+%E6%B7%B1%E5%9C%B3" target="_blank" rel="noopener">지도 →</a></div></div>
+<div class="rest-cat">야식 대배당</div><div class="rest-name">华强北 大排档 炒粉</div><div class="rest-ko">(화창베이 야식거리) 振兴路·华发路</div><div class="rest-loc">📍 福田 华强北 · 심야 영업</div>
+<a class="rest-link" href="https://uri.amap.com/search?keyword=%E5%8D%8E%E5%BC%BA%E5%8C%97+%E5%A4%A7%E6%8E%92%E6%A1%A3+%E7%82%92%E7%B2%89" target="_blank" rel="noopener">지도 →</a></div></div>
 <div class="rest-card" data-cat="noodle"><div class="rest-img bg-noodle">🍚</div><div class="rest-body">
 <div class="rest-cat">광동 죽</div><div class="rest-name">广式茶点·炒粉·粥</div><div class="rest-ko">(광식차점) 南山店</div><div class="rest-loc">📍 南山 · Aden 가까움</div>
 <a class="rest-link" href="https://uri.amap.com/search?keyword=%E5%B9%BF%E5%BC%8F%E8%8C%B6%E7%82%B9+%E7%82%92%E7%B2%89+%E7%B2%A5+%E5%8D%97%E5%B1%B1" target="_blank" rel="noopener">지도 →</a></div></div>
@@ -727,6 +746,16 @@ checks.forEach((item)=>{item.addEventListener('click',()=>{item.classList.toggle
 const now=new Date();
 const trip=[{day:'d1',start:new Date(2026,4,31),end:new Date(2026,5,1)},{day:'d2',start:new Date(2026,5,1),end:new Date(2026,5,2)},{day:'d3',start:new Date(2026,5,2),end:new Date(2026,5,3)},{day:'d4',start:new Date(2026,5,3),end:new Date(2026,5,4)}];
 for(const t of trip){if(now>=t.start&&now<t.end){const tab=document.querySelector('.tab[data-day="'+t.day+'"]');if(tab)tab.click();break;}}
+})();
+/* dynamic reveal-on-scroll (app-like entrance) */
+(function(){
+var sel='.day-summary,.flight-card,.event,.rest-card,.ess-card,.phrase,.tip,.share-banner,.check-item';
+var els=Array.prototype.slice.call(document.querySelectorAll(sel));
+els.forEach(function(el){el.classList.add('reveal');});
+function inView(){var vh=window.innerHeight||document.documentElement.clientHeight;els.forEach(function(el){if(el.classList.contains('in'))return;var r=el.getBoundingClientRect();if(r.bottom>0&&r.top<vh*0.96)el.classList.add('in');});}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -4% 0px'});els.forEach(function(el){io.observe(el);});}else{els.forEach(function(el){el.classList.add('in');});}
+tabs.forEach(function(t){t.addEventListener('click',function(){setTimeout(inView,60);});});
+setTimeout(inView,80);
 })();
 </script>
 </body>
